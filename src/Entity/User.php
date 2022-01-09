@@ -48,7 +48,7 @@ class User
     private $firstname;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Category::class, mappedBy="users")
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="users")
      */
     private $categories;
 

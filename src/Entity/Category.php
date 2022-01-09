@@ -25,7 +25,7 @@ class Category
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="categories")
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="categories")
      */
     private $users;
 

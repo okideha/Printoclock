@@ -27,7 +27,12 @@ class Newsletter
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $description;
+    private $image;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $content;
 
     /**
      * @ORM\Column(type="datetime")
@@ -63,14 +68,26 @@ class Newsletter
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getImage(): ?string
     {
-        return $this->description;
+        return $this->image;
     }
 
-    public function setDescription(string $description): self
+    public function setImage(string $image): self
     {
-        $this->description = $description;
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(string $content): self
+    {
+        $this->content = $content;
 
         return $this;
     }

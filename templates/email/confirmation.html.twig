@@ -1,0 +1,9 @@
+
+<p>Bonjour {{user.firstname|capitalize}},</p>
+<p>Vous avez été inscrit(e) avec succès {{(user.categories|length > 1) ? ' aux newsletters de :':' à la Newsletter de :'}}
+<ul>
+{% for category in user.categories %}
+    <li>{{category.name|capitalize}}</li>    
+{% endfor %}
+</ul>
+<p>Nous vous remercions pour votre intéret, vous recevrez dès à présent notre newsletter mensuelle.</p>
