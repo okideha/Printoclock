@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -45,9 +47,16 @@ class User
      */
     private $firstname;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Newsletter::class, mappedBy="users")
+     */
+    private $newsletters;
+
     public function __construct()
     {
         $this->createdAt = new \Datetime();
+        $this->newsletters = new ArrayCollection();
+        $this->rgpd = false;
     }
 
 
@@ -112,6 +121,33 @@ class User
     public function setFirstname(string $firstname): self
     {
         $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Newsletter[]
+     */
+    public function getNewsletters(): Collection
+    {
+        return $this->newsletters;
+    }
+
+    public function addNewsletter(Newsletter $newsletter): self
+    {
+        if (!$this->newsletters->contains($newsletter)) {
+            $this->newsletters[] = $newsletter;
+            $newsletter->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNewsletter(Newsletter $newsletter): self
+    {
+        if ($this->newsletters->removeElement($newsletter)) {
+            $newsletter->removeUser($this);
+        }
 
         return $this;
     }
