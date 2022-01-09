@@ -91,6 +91,9 @@
     "laminas/laminas-code": {
         "version": "4.5.1"
     },
+    "nikic/php-parser": {
+        "version": "v4.13.2"
+    },
     "psr/cache": {
         "version": "1.0.1"
     },
@@ -200,6 +203,15 @@
             "./config/packages/mailer.yaml"
         ]
     },
+    "symfony/maker-bundle": {
+        "version": "1.36",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
+        }
+    },
     "symfony/mime": {
         "version": "v5.4.2"
     },
@@ -251,6 +263,22 @@
     },
     "symfony/string": {
         "version": "v5.4.2"
+    },
+    "symfony/translation-contracts": {
+        "version": "v2.5.0"
+    },
+    "symfony/validator": {
+        "version": "5.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.3",
+            "ref": "3eb8df139ec05414489d55b97603c5f6ca0c44cb"
+        },
+        "files": [
+            "./config/packages/test/validator.yaml",
+            "./config/packages/validator.yaml"
+        ]
     },
     "symfony/var-dumper": {
         "version": "v5.4.2"
