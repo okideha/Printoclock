@@ -48,15 +48,15 @@ class User
     private $firstname;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Newsletter::class, mappedBy="users")
+     * @ORM\ManyToMany(targetEntity=Category::class, mappedBy="users")
      */
-    private $newsletters;
+    private $categories;
 
     public function __construct()
     {
         $this->createdAt = new \Datetime();
-        $this->newsletters = new ArrayCollection();
         $this->rgpd = false;
+        $this->categories = new ArrayCollection();
     }
 
 
@@ -126,29 +126,31 @@ class User
     }
 
     /**
-     * @return Collection|Newsletter[]
+     * @return Collection|Category[]
      */
-    public function getNewsletters(): Collection
+    public function getCategories(): Collection
     {
-        return $this->newsletters;
+        return $this->categories;
     }
 
-    public function addNewsletter(Newsletter $newsletter): self
+    public function addCategory(Category $category): self
     {
-        if (!$this->newsletters->contains($newsletter)) {
-            $this->newsletters[] = $newsletter;
-            $newsletter->addUser($this);
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+            $category->addUser($this);
         }
 
         return $this;
     }
 
-    public function removeNewsletter(Newsletter $newsletter): self
+    public function removeCategory(Category $category): self
     {
-        if ($this->newsletters->removeElement($newsletter)) {
-            $newsletter->removeUser($this);
+        if ($this->categories->removeElement($category)) {
+            $category->removeUser($this);
         }
 
         return $this;
     }
+
+    
 }

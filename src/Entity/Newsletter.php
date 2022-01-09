@@ -35,9 +35,10 @@ class Newsletter
     private $createdAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="newsletters")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="newsletters")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $users;
+    private $category;
 
     public function __construct()
     {
@@ -73,7 +74,7 @@ class Newsletter
 
         return $this;
     }
-    
+
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
@@ -86,27 +87,16 @@ class Newsletter
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
+    public function getCategory(): ?Category
     {
-        return $this->users;
+        return $this->category;
     }
 
-    public function addUser(User $user): self
+    public function setCategory(?Category $category): self
     {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-        }
+        $this->category = $category;
 
         return $this;
     }
 
-    public function removeUser(User $user): self
-    {
-        $this->users->removeElement($user);
-
-        return $this;
-    }
 }
