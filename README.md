@@ -16,8 +16,8 @@ Creation de la base de donnée avec les commandes :
 Génération d'un jeu de données fictifs avec la commande :
 - symfony console doctrine:fixture:load
 
-Commande envois des newsletters :
+Commande symfony envois des newsletters :
 - symfony console app:send-newsletter
 
-Commande pour lancer les envois différés :
+Commande symfony pour lancer les envois différés :
 - symfony console messenger:consume async -vv
