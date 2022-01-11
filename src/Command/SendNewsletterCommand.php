@@ -45,10 +45,10 @@ class SendNewsletterCommand extends Command
             //set date sendAt
             $this->sendMailService->isSend($newsletter);
         }
-        
+
         // outputs a success message
         $output->writeln([
-            sizeof($newslettersToSend).' newsletter(e) envoyée(s)',
+            sizeof($newslettersToSend) . ' newsletter(e) envoyée(s)',
             '',
         ]);
 
