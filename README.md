@@ -2,10 +2,10 @@
 
 Projet d'envoi de newsletter.
 
-Formulaire d'inscription à choix multiple sur plusieurs newsletters.
-Inscription et envoi de confirmation d'inscription par mail.
-Liste des newsletters par catégorie.
-Commande symfony pour un envois  des newsletters avec mise en file d'attente.
+- Formulaire d'inscription à choix multiple sur plusieurs newsletters.
+- Inscription et envoi de confirmation d'inscription par mail.
+- Liste des newsletters par catégorie.
+- Commande symfony pour un envois  des newsletters avec mise en file d'attente.
 
 ## Installation
 Modifier les variables d'environnement dans le fichier .env (connexion BDD et SMTP)
