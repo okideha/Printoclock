@@ -19,5 +19,5 @@ Génération d'un jeu de données fictifs avec la commande :
 Commande envois des newsletters :
 - symfony console app:send-newsletter
 
-Commande pour consummer les envois différés :
+Commande pour lancer les envois différés :
 - symfony console messenger:consume async -vv
