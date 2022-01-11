@@ -30,7 +30,7 @@ class Newsletter
     private $image;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=1000)
      */
     private $content;
 
@@ -38,6 +38,11 @@ class Newsletter
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $sendAt;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="newsletters")
@@ -100,6 +105,18 @@ class Newsletter
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getSendAt(): ?\DateTimeInterface
+    {
+        return $this->sendAt;
+    }
+
+    public function setSendAt(\DateTimeInterface $sendAt): self
+    {
+        $this->sendAt = $sendAt;
 
         return $this;
     }

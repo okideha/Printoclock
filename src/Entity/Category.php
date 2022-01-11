@@ -34,6 +34,11 @@ class Category
      */
     private $newsletters;
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     public function __construct()
     {
         $this->users = new ArrayCollection();

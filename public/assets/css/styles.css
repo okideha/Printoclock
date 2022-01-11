@@ -1,0 +1,12 @@
+#rgpd div{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    align-items: baseline;
+}
+
+#subscribeForm{
+    padding: 5%;
+    border-radius: 5px;
+    box-shadow: #0000002b 1px 5px 5px;
+}

@@ -34,9 +34,7 @@ class NewsletterType extends AbstractType
                 ],
                 'label' => 'Veuillez accepter la collecte des données personnelles'
             ])
-            ->add('Valider', SubmitType::class)
-            
-            
+            // ->add('Valider', SubmitType::class)
         ;
     }
 

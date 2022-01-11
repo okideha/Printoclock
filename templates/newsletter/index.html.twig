@@ -1,20 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello NewsletterController!{% endblock %}
+{% block title %}Liste des newsletters{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/symfony/PrintOClock/src/Controller/NewsletterController.php'|file_link(0) }}">src/Controller/NewsletterController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/symfony/PrintOClock/templates/newsletter/index.html.twig'|file_link(0) }}">templates/newsletter/index.html.twig</a></code></li>
-    </ul>
-</div>
+<h1 class="text-center mt-5 mb-5">Les newsletters</h1>
+    <div class="row">
+        <div class="col-md-9 d-flex flex-wrap">
+            {% for newsletter in  newsletters %}
+            <div class="card m-2 border-secondary" style="width: 18rem;">
+                <div class="card-header">  
+                {{newsletter.category|upper}}                  
+                </div>                
+                <div class="card-body"> 
+                    <h5 class="card-title txt-center">{{newsletter.name}}</h5>
+                    <img src="{{newsletter.image}}" class="card-img-top" alt="{{newsletter.name}}">                   
+                    <p class="card-text"{{newsletter.content}}</p>
+                    <p>Créé le {{newsletter.createdAt | date("d/m/Y")}}</p>
+                    {# <a href="{{path('show',{'id':article.id})}}" class="btn btn-primary">En savoir plus</a> #}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-3">
+            <h2 class="text-center">Par catégories :</h2>
+            <ul class="list-group">                  
+                {% for category in categories %}                    
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="{{path('newsletter_by_category',{'id':category.id})}}">
+                            {{category.name|capitalize}}
+                        </a> 
+                        <span class="badge bg-danger rounded-pill">{{category.newsletters.count }} newsletter(s)</span>                                                   
+                    </li>
+                {% endfor %}
+                <hr>
+                 <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="{{path('newsletter')}}">Toutes</a> 
+                </li>                                     
+            </ul>
+            
+        </div>
+        
+    </div>
 {% endblock %}

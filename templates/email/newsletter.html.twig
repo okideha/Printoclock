@@ -1,0 +1,12 @@
+<p>Bonjour {{user.firstname|capitalize}},</p>
+
+<p>Vous recevez cet email car vous êtes abonné à la newsletter {{newsletter.category.name|upper}}, ce n’est pas du SPAM :)</p>
+
+<img src="{{newsletter.image}}" alt="{{newsletter.name|capitalize}}">
+
+<div>
+    {{newsletter.content|raw}}
+</div>
+<p>
+Cliquez <a href="{{absolute_url(path('unsubscribe', {id: user.id, newsletter: newsletter.id, token: user.token}))}}">ici</a> pour vous désinscrire.
+</p>
